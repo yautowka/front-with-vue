@@ -31,10 +31,14 @@ export const useAuthStore = defineStore({
                 alertStore.error(error);                
             }
         },
-        logout() {
+        async logout() {
             this.user = null;
             localStorage.removeItem('user');
             router.push('/account/login');
+        },
+        check_access(){
+            if(this.user == null) return false;
+            return this.user['username'] == 'admin';
         }
     }
 });
