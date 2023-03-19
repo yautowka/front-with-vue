@@ -11,6 +11,6 @@ const { user } = storeToRefs(authStore);
     <div v-if="user">
         <h1>Hi {{user.firstName}}!</h1>
         <p>You're logged in</p>
-        <p><router-link to="/users">Manage Users</router-link></p>
+        <p><router-link v-if="authStore.check_access()" to="/users">Manage Users</router-link></p>
     </div>
 </template>
